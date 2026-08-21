@@ -1,0 +1,382 @@
+.detail-container {
+  /* Vùng chứa toàn bộ nội dung của trang chi tiết */
+  min-height: 100vh;
+  /* Đảm bảo nền màu kem luôn phủ kín màn hình */
+  background: var(--bg);
+  /* Lấy màu nền be nhạt từ phong cách chung */
+  padding: 3rem;
+  /* Tạo khoảng trống lề xung quanh cho thoáng nội dung */
+}
+
+.detail-content {
+  /* Khối nội dung chính (giới hạn độ rộng để người đọc không phải liếc mắt quá xa) */
+  max-width: 800px;
+  /* Độ rộng tối đa là 800px, tiêu chuẩn cho đọc văn bản */
+  margin: 0 auto;
+  /* Đẩy khối nội dung này vào chính giữa trang */
+}
+
+.detail-header {
+  /* Phần tiêu đề đầu trang chi tiết (Tên dự án, Mô tả) */
+  margin-bottom: 3rem;
+  /* Khoảng trống bên dưới phần đầu này */
+}
+
+.detail-type {
+  /* Cái nhãn nhỏ hiện loại dự án (ví dụ: Dự án Học thuật) */
+  display: inline-block;
+  /* Giúp nhãn nằm gọn gàng */
+  font-size: 0.9rem;
+  /* Kích thước chữ nhãn */
+  padding: 8px 18px;
+  /* Tạo độ dày cho nhãn */
+  background: var(--accent);
+  /* Nền màu xanh đen */
+  color: white;
+  /* Chữ màu trắng */
+  border-radius: 30px;
+  /* Bo tròn nhãn hoàn toàn như hình viên thuốc */
+  font-weight: 600;
+  /* Làm chữ đậm lên */
+  margin-bottom: 1.5rem;
+  /* Khoảng trống bên dưới nhãn */
+}
+
+.detail-header h1 {
+  /* Tên của dự án */
+  font-family: 'Playfair Display', serif;
+  /* Font chữ tiêu đề cổ điển */
+  font-size: 2.8rem;
+  /* Chữ tên dự án rất lớn và nổi bật */
+  color: var(--accent);
+  /* Màu xanh đen */
+  margin-bottom: 1rem;
+  /* Khoảng trống dưới tên */
+  line-height: 1.2;
+  /* Khoảng cách giữa các dòng hẹp để tiêu đề trông gắn kết */
+}
+
+.detail-header p {
+  /* Đoạn mô tả dự án */
+  font-size: 1.15rem;
+  /* Chữ mô tả hơi lớn một chút để dễ đọc */
+  color: var(--text-light);
+  /* Màu xám mô tả */
+  line-height: 1.8;
+  /* Khoảng cách dòng chữ thoáng đãng */
+}
+
+.detail-grid {
+  /* Lưới thông tin: Thời gian và Kết quả */
+  display: grid;
+  /* Bật chế độ Lưới (Grid) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Tự động chia thành 2 cột đều nhau */
+  gap: 2rem;
+  /* Khoảng cách giữa 2 hộp thông tin */
+  margin-bottom: 3.5rem;
+  /* Khoảng trống sau khối thông tin này */
+}
+
+.info-box {
+  /* Các hộp trắng chứa thông tin Thời gian/Kết quả */
+  background: white;
+  /* Nền hộp màu trắng */
+  padding: 2rem;
+  /* Tạo khoảng trống rộng rãi bên trong hộp */
+  border-radius: var(--radius);
+  /* Bo tròn 4 góc hộp */
+  border-left: 5px solid var(--accent);
+  /* Vẽ một thanh màu xanh đen ở bên trái hộp để trang trí */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  /* Bóng đổ mờ ảo dưới hộp */
+}
+
+.info-box h3 {
+  /* Tiêu đề trong hộp (ví dụ: THỜI GIAN THỰC HIỆN) */
+  font-size: 0.95rem;
+  /* Chữ tiêu đề mục hơi nhỏ */
+  color: var(--accent);
+  /* Màu xanh đen */
+  font-weight: 600;
+  /* Làm chữ đậm */
+  margin-bottom: 0.8rem;
+  /* Khoảng trống dưới tiêu đề mục */
+  text-transform: uppercase;
+  /* Viết hoa toàn bộ các chữ cái */
+  letter-spacing: 1px;
+  /* Giãn cách các chữ cái ra một chút cho thoáng */
+}
+
+.info-box p {
+  /* Con số hoặc nội dung chính trong hộp */
+  font-size: 1.3rem;
+  /* Chữ hiện kết quả/thời gian khá to */
+  color: var(--text);
+  /* Màu đen sâu */
+  font-weight: 600;
+  /* Làm chữ đậm hẳn lên */
+}
+
+.detail-section {
+  /* Các vùng nội dung chính (Mục tiêu, Quy trình...) */
+  background: white;
+  /* Nền vùng màu trắng */
+  padding: 2.5rem;
+  /* Tạo khoảng trống bên trong vùng */
+  border-radius: var(--radius);
+  /* Bo tròn 4 góc */
+  margin-bottom: 2rem;
+  /* Khoảng cách giữa các vùng */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  /* Bóng đổ mờ dưới vùng */
+}
+
+.detail-section h2 {
+  /* Tiêu đề của từng vùng */
+  font-family: 'Playfair Display', serif;
+  /* Font chữ tiêu đề cổ điển */
+  font-size: 1.8rem;
+  /* Chữ tiêu đề lớn vừa phải */
+  color: var(--accent);
+  /* Màu xanh đen */
+  margin-bottom: 1.5rem;
+  /* Khoảng trống dưới tiêu đề */
+  padding-bottom: 1rem;
+  /* Khoảng đệm từ chữ đến đường kẻ bên dưới */
+  border-bottom: 2px solid #f0e9df;
+  /* Vẽ một đường kẻ mỏng ở đáy tiêu đề h2 */
+}
+
+.finding-text strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.objectives-list {
+  /* Danh sách các mục tiêu */
+  list-style: none;
+  /* Bỏ dấu chấm tròn mặc định của danh sách */
+  padding: 0;
+  /* Xóa khoảng đệm mặc định */
+}
+
+.objectives-list li {
+  /* Từng dòng trong danh sách mục tiêu */
+  padding: 1rem 0 1rem 2.5rem;
+  /* Để dành một khoảng trống 2.5rem bên trái để hiện dấu tích xanh */
+  position: relative;
+  /* Làm điểm tựa để vẽ dấu tích xanh */
+  color: var(--text-light);
+  /* Màu xám */
+  font-size: 1.05rem;
+  /* Kích thước chữ vừa phải */
+  line-height: 1.7;
+  /* Khoảng cách giữa các dòng */
+}
+
+.objectives-list li::before {
+  /* Hình dấu tích xanh (Checkmark) trang trí đầu dòng */
+  content: "✓";
+  /* Nội dung là dấu tích */
+  position: absolute;
+  /* Đặt dấu tích ở vị trí chính xác ta muốn */
+  left: 0;
+  /* Nằm sát mép trái của dòng chữ */
+  color: var(--accent);
+  /* Dấu tích màu xanh đen */
+  font-weight: bold;
+  /* Làm dấu tích đậm lên */
+  font-size: 1.3rem;
+  /* Kích thước dấu tích hơi to một chút */
+}
+
+.process-timeline {
+  /* Cách hiển thị quy trình làm việc theo dòng thời gian (Timeline) */
+  position: relative;
+  /* Làm điểm tựa cho thanh dọc nối các bước */
+  padding-left: 2rem;
+  /* Khoảng cách lề bên trái */
+  margin-top: 1.2rem;
+}
+
+.process-timeline::before {
+  /* Thanh dọc nối các mốc thời gian */
+  content: "";
+  position: absolute;
+  left: 7px;
+  /* Nằm chính giữa vạch */
+  top: 8px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0.25;
+}
+
+.timeline-item {
+  /* Từng bước trong quy trình */
+  position: relative;
+  padding-left: 0.8rem;
+  /* Tiêu đề Bước nằm sát vạch dọc */
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  /* Chấm tròn nằm chính giữa vạch dọc */
+  position: absolute;
+  left: -2rem;
+  /* Đè chính giữa vạch dọc */
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--accent);
+  box-sizing: border-box;
+}
+
+.timeline-content h4 {
+  /* Tên Bước (Bước 1, Bước 2...) - Nằm sát vạch dọc */
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  margin-left: 0;
+  /* Sát vạch dọc */
+}
+
+.timeline-content p {
+  /* Mô tả bước - Thụt lề vào trong như viết vở */
+  color: var(--text-light);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 0;
+  margin-left: 1.4rem;
+  /* Thụt lề dòng dưới vào bên phải */
+}
+
+.tools-list {
+  /* Danh sách các thẻ (tag) công cụ */
+  display: flex;
+  /* Dàn hàng ngang các nhãn công cụ */
+  flex-wrap: wrap;
+  /* Nếu nhiều nhãn quá thì tự động xuống dòng tiếp theo */
+  gap: 1rem;
+  /* Khoảng cách giữa các nhãn công cụ */
+}
+
+.tool-tag {
+  /* Kiểu dáng cho từng cái nhãn công cụ (như Canva, CapCut...) */
+  display: inline-block;
+  /* Giúp nhãn nằm gọn gàng */
+  padding: 10px 18px;
+  /* Tạo độ dày cho nhãn */
+  background: var(--accent-light);
+  /* Nền nhãn màu be đồng sang trọng */
+  color: white;
+  /* Chữ nhãn màu trắng */
+  border-radius: 25px;
+  /* Bo tròn nhãn hoàn toàn như hình viên thuốc */
+  font-size: 0.95rem;
+  /* Chữ nhãn vừa phải */
+  font-weight: 500;
+  /* Chữ đậm vừa */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Tạo bóng đổ nhẹ bên dưới nhãn */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .gallery-item {
+    background: white;
+    border: 1px solid #f0e9df;
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-light);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .gallery-item a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #faf7f2;
+    padding: 0.5rem;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    transition: var(--transition);
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.03);
+  }
+
+  .gallery-item span {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .detail-cta {
+    /* Phần nút bấm ở cuối trang chi tiết */
+    text-align: center;
+    /* Căn nút vào giữa màn hình */
+    margin-top: 3rem;
+    /* Khoảng trống phía trên khu vực nút */
+    padding-top: 2rem;
+    /* Khoảng đệm từ đường kẻ ngang đến nút */
+    border-top: 2px solid #f0e9df;
+    /* Vẽ một đường kẻ ngang để phân chia khu vực cuối trang */
+  }
+
+  /* ================== RESPONSIVE (CHO ĐIỆN THOẠI) ================== */
+  @media (max-width: 768px) {
+
+    /* Khi xem trang chi tiết trên điện thoại */
+    .detail-container {
+      padding: 1.5rem;
+      /* Giảm bớt khoảng trống lề cho đỡ tốn diện tích */
+    }
+
+    .detail-header h1 {
+      font-size: 1.8rem;
+      /* Chữ tên dự án nhỏ lại cho vừa màn hình điện thoại */
+    }
+
+    .detail-grid {
+      grid-template-columns: 1fr;
+      /* Thay vì 2 cột thông tin, dồn lại thành 1 cột dọc */
+    }
+
+    .detail-section {
+      padding: 1.5rem;
+      /* Giảm bớt khoảng trống bên trong các vùng nội dung */
+    }
+  }

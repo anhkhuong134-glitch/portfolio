@@ -1,0 +1,158 @@
+/* 
+  FILE: projects.css
+  ĐÂY LÀ GÌ? : Đây là file "Trang trí" dành riêng cho Trang danh sách dự án.
+  DÙNG LÀM GÌ? : Nó quy định cách các thẻ dự án hiện lên như thế nào (màu nền, bóng đổ, cách sắp xếp theo hàng/cột).
+  TÁC DỤNG VỚI DỰ ÁN: Giúp trang danh sách dự án trông bắt mắt, ngăn nắp và tạo cảm giác sang trọng khi người dùng lướt xem các thành tựu của bạn.
+*/
+
+.projects-hero {
+  /* Phần giới thiệu đầu trang dự án */
+  text-align: center;          /* Căn chữ vào giữa màn hình */
+  padding: 5rem 3rem;          /* Tạo khoảng trống cực rộng bên trong (trên-dưới 5rem) để làm nổi bật tiêu đề */
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.05) 0%, rgba(156, 124, 94, 0.02) 100%); /* Nền chuyển màu mờ ảo, tạo chiều sâu cho trang */
+  margin-bottom: 2rem;         /* Khoảng trống bên dưới phần giới thiệu này */
+}
+
+.projects-hero h1 {
+  /* Tiêu đề "Dự Án Của Tôi" */
+  font-family: 'Playfair Display', serif; /* Font chữ tiêu đề cổ điển */
+  font-size: 3rem;             /* Kích thước chữ rất lớn */
+  color: var(--accent);        /* Màu chữ xanh đen */
+  margin-bottom: 1rem;         /* Khoảng trống nhỏ bên dưới chữ */
+}
+
+.projects-hero p {
+  /* Dòng mô tả nhỏ dưới tiêu đề */
+  font-size: 1.1rem;           /* Kích thước chữ vừa phải */
+  color: var(--text-light);    /* Màu chữ xám nhẹ */
+}
+
+.projects-container {
+  /* Vùng chứa toàn bộ danh sách các thẻ dự án */
+  padding: 0 3rem 3rem;        /* Tạo khoảng cách lề hai bên và bên dưới để nội dung không bị sát mép màn hình */
+}
+
+.projects-grid {
+  /* Cách sắp xếp các thẻ dự án */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  /* Kiểu dáng cho từng cái thẻ chứa dự án - Khung dọc sang trọng */
+  background: white;
+  padding: 2.2rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border-top: 4px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 100%;
+}
+
+.project-card:hover {
+  /* Hiệu ứng khi bạn đưa chuột vào thẻ dự án */
+  transform: translateY(-12px); /* Thẻ sẽ nhấc lên cao 12px giống như đang bay lên */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); /* Cái bóng đổ bên dưới sẽ đậm và rộng hơn, làm thẻ trông nổi bật hẳn lên */
+}
+
+.project-card h3 {
+  /* Tên của dự án nằm trong thẻ */
+  color: var(--accent);        /* Màu xanh đen */
+  margin-bottom: 1rem;         /* Khoảng cách bên dưới tên */
+  font-size: 1.3rem;           /* Chữ tên dự án hơi lớn một chút */
+}
+
+.project-card p {
+  /* Dòng mô tả ngắn trong thẻ dự án */
+  color: var(--text-light);    /* Màu chữ xám nhẹ */
+  margin-bottom: 1.2rem;       /* Khoảng trống bên dưới đoạn văn */
+  line-height: 1.7;            /* Khoảng cách giữa các dòng chữ thoáng đãng */
+}
+
+.project-type {
+  /* Cái nhãn nhỏ hiện loại dự án (ví dụ: Dự án Học thuật) */
+  display: inline-block;       /* Giúp nhãn nằm gọn gàng */
+  font-size: 0.85rem;          /* Chữ nhãn hơi nhỏ */
+  padding: 6px 16px;           /* Tạo độ dày cho nhãn */
+  background: var(--accent);   /* Nền nhãn màu xanh đen */
+  color: white;                /* Chữ nhãn màu trắng */
+  border-radius: 30px;         /* Bo tròn nhãn hoàn toàn như hình viên thuốc */
+  margin-bottom: 1.2rem;       /* Khoảng trống bên dưới nhãn */
+  font-weight: 600;            /* Làm chữ nhãn đậm lên */
+  width: fit-content;          /* Chiều rộng nhãn vừa khít với độ dài của chữ */
+}
+
+.results {
+  /* Khối hiện kết quả đạt được trong thẻ dự án */
+  background: #fdfaf5;         /* Nền khối màu kem nhạt */
+  padding: 1rem;               /* Tạo độ dày cho khối */
+  border-radius: 10px;         /* Bo tròn 4 góc khối */
+  margin-bottom: 1.2rem;       /* Khoảng trống bên dưới khối */
+  color: var(--text);          /* Màu chữ đen sâu */
+  border-left: 4px solid var(--accent-light); /* Một cái vạch dọc màu be đồng ở bên trái khối để trang trí */
+}
+
+.tools {
+  /* Dòng hiện các công cụ đã dùng ở dưới cùng thẻ */
+  color: var(--accent-light);   /* Màu chữ be đồng */
+  font-size: 0.95rem;          /* Kích thước chữ vừa phải */
+  font-weight: 500;            /* Chữ hơi đậm một chút */
+  margin-top: auto;            /* Đẩy dòng công cụ này luôn nằm sát dưới đáy thẻ dự án */
+  padding-top: 1rem;           /* Khoảng trống phía trên dòng công cụ */
+}
+
+.card-btn-container {
+  /* Khối chứa nút xem chi tiết ở cuối thẻ */
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #eee8df;
+}
+
+.card-btn {
+  /* Nút Xem Chi Tiết Dự Án */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 1.4rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.15);
+}
+
+.project-card:hover .card-btn {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(196, 154, 108, 0.35);
+}
+
+/* ================== RESPONSIVE (CHO ĐIỆN THOẠI) ================== */
+@media (max-width: 768px) {
+  /* Khi xem web trên điện thoại hoặc máy tính bảng */
+  .projects-hero {
+    padding: 3rem 1.5rem;      /* Giảm bớt khoảng trống đầu trang cho đỡ tốn diện tích */
+  }
+  
+  .projects-hero h1 {
+    font-size: 2rem;           /* Chữ tiêu đề nhỏ lại cho vừa màn hình điện thoại */
+  }
+  
+  .projects-container {
+    padding: 0 1.5rem 3rem;    /* Giảm lề hai bên */
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr; /* Chỉ hiển thị 1 dự án trên mỗi hàng (1 cột duy nhất) */
+  }
+}

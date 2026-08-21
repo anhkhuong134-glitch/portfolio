@@ -1,0 +1,66 @@
+<!-- 
+  FILE: projects.html
+  ĐÂY LÀ GÌ? : Đây là file "Danh sách dự án".
+  DÙNG LÀM GÌ? : Nó tạo ra một không gian để hiển thị tất cả những công việc, chiến dịch mà Khương Tuấn Anh đã từng thực hiện.
+  TÁC DỤNG VỚI DỰ ÁN: Trang này đóng vai trò như một phòng trưng bày (Portfolio), giúp khách hàng hoặc nhà tuyển dụng thấy được năng lực thực tế của bạn thông qua các dự án cụ thể.
+-->
+
+<!DOCTYPE html> <!-- Khai báo kiểu tài liệu HTML5 hiện đại -->
+<html lang="vi"> <!-- Thiết lập ngôn ngữ trang là tiếng Việt -->
+<head>
+  <meta charset="UTF-8"> <!-- Mã hóa ký tự để hiện đúng tiếng Việt có dấu -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Giúp trang web tự co giãn đẹp trên di động -->
+  <title>Dự Án | KHƯƠNG TUẤN ANH</title> <!-- Tên hiện trên tab trình duyệt -->
+  <link rel="stylesheet" href="common.css"> <!-- Tải các phong cách chung (nút bấm, màu sắc) -->
+  <link rel="stylesheet" href="projects.css"> <!-- Tải phong cách riêng để trang trí danh sách dự án -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"> <!-- Tải font chữ đẹp -->
+</head>
+<body>
+  <nav class="navbar"> <!-- Thanh điều hướng nằm ở đầu trang -->
+    <a href="index.html" class="logo">KHƯƠNG TUẤN ANH</a> <!-- Chữ tên bạn, bấm vào sẽ quay về trang Profile -->
+    <a href="index.html" class="back-btn">Về Profile</a> <!-- Nút bấm nhỏ để quay về trang chủ -->
+  </nav>
+
+  <section class="projects-hero"> <!-- Phần giới thiệu mở đầu của trang dự án -->
+    <h1>Dự Án Của Tôi</h1> <!-- Tiêu đề lớn nhất của trang -->
+    <p>Những dự án thực tế & học thuật trong lĩnh vực Digital Marketing</p> <!-- Dòng mô tả ngắn gọn -->
+  </section>
+
+  <div class="projects-container"> <!-- Một cái 'kho' chứa toàn bộ các thẻ dự án -->
+    <div class="projects-grid" id="projectsGrid"> <!-- Một cái 'lưới' giúp chia các dự án thành các cột đều nhau -->
+      <!-- Chỗ này để trống vì JavaScript (file script.js) sẽ tự động đổ dữ liệu vào đây -->
+    </div>
+  </div>
+
+  <script src="script.js"></script> <!-- Kết nối với 'bộ não' JavaScript để lấy dữ liệu dự án -->
+  <script>
+    // ĐOẠN CODE NÀY GIÚP TỰ ĐỘNG TẠO RA CÁC THẺ DỰ ÁN MÀ BẠN KHÔNG CẦN VIẾT Từng CÁI MỘT
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectsGrid = document.getElementById('projectsGrid'); // Tìm cái 'lưới' ở trên để chuẩn bị bỏ đồ vào
+      
+      // Lấy danh sách dự án từ túi dự liệu (projectsData) trong file script.js
+      Object.keys(projectsData).forEach(id => {
+        const project = projectsData[id]; // Lấy thông tin của 1 dự án
+        const card = document.createElement('div'); // Tạo ra một cái 'thẻ' (hộp) mới
+        card.className = 'project-card'; // Đặt tên cho thẻ này là project-card để CSS trang trí
+        card.onclick = () => goToProject(id); // Khi bấm vào thẻ này, trang web sẽ chuyển sang trang chi tiết
+        
+        // Vẽ nội dung bên trong cái thẻ đó
+        card.innerHTML = `
+          <span class="project-type">${project.type}</span> <!-- Hiện loại dự án (Học thuật hay Cá nhân) -->
+          <h3>${project.title}</h3> <!-- Hiện tên dự án -->
+          <p>${project.description}</p> <!-- Hiện mô tả dự án -->
+          <div class="tools">
+            <i class="fas fa-tools"></i> ${project.tools.join(' • ')} <!-- Hiện các công cụ đã dùng -->
+          </div>
+          <div class="card-btn-container">
+            <span class="card-btn">Xem Chi Tiết Dự Án &rarr;</span> <!-- Nút bấm xem chi tiết -->
+          </div>
+        `;
+        
+        projectsGrid.appendChild(card); // Bỏ cái thẻ vừa làm xong vào trong 'lưới' hiển thị
+      });
+    });
+  </script>
+</body>
+</html>

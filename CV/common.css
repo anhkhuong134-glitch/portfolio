@@ -1,0 +1,123 @@
+/* 
+  FILE: common.css
+  ĐÂY LÀ GÌ? : Đây là file "Phong cách chung" hay "Đồng phục" của toàn bộ trang web.
+  DÙNG LÀM GÌ? : Nó chứa các quy định về màu sắc, kiểu chữ và hình dáng của các nút bấm mà trang nào cũng dùng tới.
+  TÁC DỤNG VỚI DỰ ÁN: Giúp tất cả các trang trong dự án (Trang chủ, Trang dự án, Trang chi tiết) có sự đồng bộ, chuyên nghiệp và đẹp mắt giống nhau mà không cần viết đi viết lại nhiều lần.
+*/
+
+:root {
+  /* Đây là bảng màu và các cài đặt cốt lõi của web */
+  --bg: #fdfaf5;           /* Màu nền chính nhẹ nhàng, tạo cảm giác thư giãn như màu giấy cũ */
+  --surface: #ffffff;      /* Màu nền của các khối card và sidebar (trắng tinh khiết) */
+  --text: #1a1a1a;         /* Màu chữ chính, màu đen sâu để đọc chữ rõ ràng nhất */
+  --text-light: #4a4a4a;   /* Màu chữ phụ, xám đậm cho các đoạn mô tả ít quan trọng hơn */
+  --accent: #2c3e50;       /* Màu xanh đen sâu (đại diện cho mệnh Tuyền Trung Thủy của bạn) */
+  --accent-light: #9c7c5e; /* Màu be đồng, tạo điểm nhấn sang trọng và cổ điển cho các nút bấm */
+  --radius: 20px;          /* Độ bo tròn góc cho các hộp và thẻ trên web */
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Hiệu ứng chuyển động mượt mà khi bạn đưa chuột vào các thành phần */
+}
+
+/* Đây là quy định về hiệu ứng "Hiện hình từ từ" khi trang web vừa mở ra */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); } /* Lúc đầu: mờ tịt và nằm thấp hơn vị trí chuẩn 20px */
+  to { opacity: 1; transform: translateY(0); }     /* Lúc sau: hiện rõ 100% và về đúng vị trí chuẩn */
+}
+
+* {
+  margin: 0;               /* Bỏ các khoảng cách lề mặc định của trình duyệt để web gọn gàng hơn */
+  padding: 0;              /* Bỏ các khoảng đệm mặc định của trình duyệt */
+  box-sizing: border-box;  /* Giúp tính toán kích thước các hộp chính xác hơn, không bị lòi ra ngoài */
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif; /* Chọn kiểu chữ hiện đại và dễ nhìn nhất cho người dùng */
+  background: var(--bg);   /* Tô màu nền cho toàn bộ trang web */
+  color: var(--text);      /* Tô màu cho toàn bộ chữ trên trang web */
+  line-height: 1.7;        /* Tạo khoảng cách giữa các dòng chữ để người đọc không bị mỏi mắt */
+  overflow-x: hidden;      /* Ngăn chặn trang web bị tràn sang hai bên, không xuất hiện thanh cuộn ngang */
+}
+
+section {
+  /* Mọi vùng nội dung trên web sẽ tự động áp dụng hiệu ứng hiện hình mượt mà khi load */
+  animation: fadeIn 1s ease-out forwards; 
+}
+
+/* ================== QUY ĐỊNH VỀ CÁC NÚT BẤM (BUTTONS) ================== */
+
+.btn-primary {
+  /* Đây là kiểu dáng cho nút bấm chính (nút to nhất) */
+  display: inline-block;    /* Giúp nút nằm gọn trên một dòng */
+  margin-top: 2rem;         /* Tạo khoảng cách phía trên nút */
+  padding: 14px 36px;       /* Tạo độ dày cho nút (trên-dưới 14px, trái-phải 36px) */
+  background: var(--accent);/* Tô màu nền xanh đen cho nút */
+  color: white;             /* Màu chữ trong nút là màu trắng */
+  border-radius: 50px;      /* Bo tròn hoàn toàn hai đầu nút như hình viên thuốc */
+  text-decoration: none;    /* Bỏ gạch chân dưới chữ trong nút */
+  font-weight: 600;         /* Làm chữ trong nút đậm lên */
+  transition: var(--transition); /* Cho phép hiệu ứng biến đổi mượt mà khi hover */
+}
+
+.btn-primary:hover {
+  /* Khi bạn đưa chuột vào nút bấm chính */
+  transform: translateY(-4px); /* Nút sẽ nhích lên trên một chút giống như đang nổi lên */
+  box-shadow: 0 15px 30px rgba(156, 124, 94, 0.25); /* Tạo một cái bóng mờ ảo phía dưới nút */
+}
+
+.btn-secondary {
+  /* Đây là kiểu dáng cho nút bấm phụ (nút có viền, nền trong suốt) */
+  display: inline-block;
+  padding: 14px 36px;
+  background: transparent;   /* Nền trong suốt, nhìn xuyên thấu qua được */
+  color: var(--accent);     /* Chữ màu xanh đen */
+  border: 2px solid var(--accent); /* Vẽ một cái viền xung quanh nút */
+  border-radius: 50px;      /* Bo tròn hai đầu nút */
+  text-decoration: none;    /* Bỏ gạch chân */
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  /* Khi đưa chuột vào nút phụ */
+  background: var(--accent); /* Nền nút sẽ lập tức đổi sang màu xanh đen */
+  color: white;              /* Chữ trong nút đổi sang màu trắng */
+  transform: translateY(-2px); /* Nút nhích lên nhẹ */
+}
+
+/* ================== THANH ĐIỀU HƯỚNG (NAVBAR) ================== */
+
+.navbar {
+  /* Đây là thanh nằm ở trên cùng của trang Dự án và Chi tiết */
+  position: sticky;           /* Thanh này sẽ luôn "dính" ở trên cùng khi bạn cuộn trang xuống */
+  top: 0;                     /* Vị trí dính là sát mép trên */
+  background: white;          /* Nền trắng sạch sẽ */
+  padding: 1.2rem 3rem;       /* Tạo độ dày cho thanh nav */
+  display: flex;              /* Dùng flexbox để chia không gian: logo 1 bên, nút 1 bên */
+  justify-content: space-between; /* Đẩy 2 thành phần về 2 đầu thanh */
+  align-items: center;        /* Căn cho logo và nút nằm thẳng hàng nhau theo chiều dọc */
+  border-bottom: 2px solid var(--accent); /* Một đường kẻ mỏng dưới cùng thanh nav để làm điểm nhấn */
+  z-index: 100;               /* Đảm bảo thanh này luôn nằm trên cùng, không bị nội dung khác đè lên */
+}
+
+.logo {
+  /* Kiểu dáng cho chữ tên của bạn nằm ở góc trái thanh điều hướng */
+  font-family: 'Playfair Display', serif; /* Font chữ tiêu đề cổ điển */
+  font-size: 1.4rem;          /* Kích thước chữ vừa phải */
+  text-decoration: none;      /* Bỏ gạch chân */
+  color: var(--accent);       /* Màu chữ xanh đen */
+  font-weight: 600;           /* Chữ đậm */
+}
+
+.back-btn {
+  /* Kiểu dáng cho nút "Quay lại" trên thanh điều hướng */
+  color: var(--text-light);   /* Màu chữ xám */
+  text-decoration: none;      /* Bỏ gạch chân */
+  font-weight: 500;           /* Chữ đậm vừa */
+  padding: 8px 16px;          /* Tạo độ dày cho nút */
+  border-radius: 8px;         /* Bo góc nhẹ cho nút */
+  transition: var(--transition); /* Hiệu ứng mượt */
+}
+
+.back-btn:hover {
+  background: #f0e9df;        /* Khi đưa chuột vào, nút hiện nền màu be nhạt */
+  color: var(--accent);       /* Chữ đổi sang màu xanh đen */
+}

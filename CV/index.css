@@ -1,0 +1,444 @@
+/* 
+  FILE: index.css
+  ĐÂY LÀ GÌ? : Đây là file "Trang điểm" hay "Thiết kế nội thất" dành riêng cho Trang chủ (Trang Profile).
+  DÙNG LÀM GÌ? : Nó quy định cách sắp xếp các cột, kích thước ảnh đại diện, màu sắc chữ và các hiệu ứng lung linh cho riêng trang chủ của bạn.
+  TÁC DỤNG VỚI DỰ ÁN: Làm cho trang giới thiệu bản thân của Khương Tuấn Anh trở nên sang trọng, dễ nhìn và có bố cục chuyên nghiệp trên cả máy tính lẫn điện thoại.
+*/
+
+/* ================== PHẦN BỐ CỤC CHÍNH (LAYOUT) ================== */
+.container {
+  max-width: 1200px;           /* Giới hạn độ rộng tối đa để web không bị dàn quá ngang trên màn hình lớn */
+  margin: 0 auto;              /* Căn toàn bộ nội dung web vào chính giữa màn hình */
+  display: grid;               /* Kích hoạt chế độ 'Lưới' để dễ dàng chia cột */
+  grid-template-columns: 380px 1fr; /* Chia web thành 2 cột: Cột trái (Sidebar) rộng 380px, cột phải chiếm phần còn lại */
+  min-height: 100vh;           /* Đảm bảo chiều cao web luôn phủ kín ít nhất một màn hình máy tính */
+}
+
+/* ================== CỘT BÊN TRÁI (SIDEBAR) ================== */
+.sidebar {
+  background: white;           /* Màu nền của cột trái là màu trắng */
+  padding: 2.2rem 2rem;        /* Khoảng trống bên trong cột gọn gàng */
+  border-right: 1px solid #e5e0d8; /* Đường kẻ mỏng bên phải */
+  position: sticky;            /* Cột dính chặt ở trên cùng */
+  top: 0;
+  height: 100vh;               /* Chiều cao phủ kín màn hình */
+  overflow-y: auto;            /* Cho phép cuộn khi màn hình cực nhỏ */
+  scrollbar-width: none;       /* Ẩn thanh cuộn trên Firefox */
+  -ms-overflow-style: none;    /* Ẩn thanh cuộn trên IE/Edge */
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;               /* Ẩn thanh cuộn trên Chrome/Safari/Edge */
+}
+
+.avatar {
+  width: 170px;                /* Độ rộng ảnh đại diện gọn gàng */
+  height: 170px;               /* Chiều cao ảnh đại diện */
+  border-radius: 50%;          /* Cắt ảnh thành hình tròn hoàn hảo */
+  object-fit: cover;           /* Đảm bảo ảnh rõ nét */
+  border: 5px solid #f0e9df;   /* Vòng viền màu be */
+  margin: 0 auto 1.2rem;       /* Đẩy ảnh vào giữa cột */
+  display: block;
+}
+
+.profile {
+  text-align: center;          /* Căn toàn bộ chữ (tên, chức danh) vào giữa cột */
+}
+
+.profile h1 {
+  font-family: 'Playfair Display', serif; /* Sử dụng font chữ sang trọng cho tên của bạn */
+  font-size: 2rem;             /* Kích thước chữ tên khá lớn để làm nổi bật */
+  margin-bottom: 0.5rem;       /* Khoảng trống nhỏ bên dưới tên */
+  color: var(--accent);        /* Màu chữ lấy từ biến 'accent' (màu xanh đen) */
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-light);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-style: italic;          /* In nghiêng câu slogan cá nhân */
+  font-size: 0.85rem;          /* Kích thước chữ hơi nhỏ để tinh tế hơn */
+  color: var(--text-light);    /* Màu chữ xám nhẹ */
+  line-height: 1.4;            /* Khoảng cách giữa các dòng trong câu slogan */
+  margin-bottom: 1.5rem;       /* Khoảng trống bên dưới câu slogan */
+}
+
+.personal-info {
+  margin: 1.2rem 0;            /* Khoảng trống vừa phải */
+  text-align: left;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.personal-info p {
+  margin-bottom: 0.6rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.personal-info p strong {
+  color: var(--text);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.contact-info {
+  margin: 1.2rem 0;
+}
+
+.contact-info a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.4rem 0;
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.contact-info a:hover {
+  color: var(--accent-light);
+  padding-left: 5px;
+}
+
+.social-links {
+  margin-top: 1.2rem;
+  display: flex;
+  gap: 0.8rem;                 /* Khoảng cách giữa các biểu tượng */
+  justify-content: center;     /* Đưa toàn bộ các nút vào giữa cột */
+}
+
+.social-links a {
+  width: 45px;                 /* Độ rộng của vòng tròn chứa icon */
+  height: 45px;                /* Chiều cao của vòng tròn chứa icon */
+  display: flex;               /* Để căn giữa icon bên trong vòng tròn */
+  align-items: center;         /* Căn giữa theo chiều dọc */
+  justify-content: center;     /* Căn giữa theo chiều ngang */
+  border-radius: 50%;          /* Biến khung vuông thành hình tròn */
+  background: #f3f0ec;         /* Màu nền nhạt của vòng tròn */
+  transition: var(--transition); /* Hiệu ứng mượt mà khi di chuột vào */
+}
+
+.social-links a img {
+  width: 20px;                 /* Kích thước của biểu tượng MXH (Zalo, Facebook...) */
+  height: 20px;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px); /* Nâng nhẹ vòng tròn lên khi di chuột vào */
+  background: var(--accent-light); /* Đổi màu nền vòng tròn sang màu be đồng */
+}
+
+/* ================== PHẦN NỘI DUNG CHÍNH (CỘT PHẢI) ================== */
+.main-content {
+  padding: 4rem 3.5rem;        /* Khoảng trống lớn bên trong cột phải để nội dung thoáng đãng */
+  background: var(--bg);       /* Màu nền hơi kem nhẹ nhàng */
+}
+
+.main-content h2 {
+  font-family: 'Playfair Display', serif; /* Font chữ tiêu đề vùng (Về Tôi, Kỹ Năng...) */
+  font-size: 2.2rem;           /* Kích thước tiêu đề lớn */
+  margin-bottom: 2.5rem;       /* Khoảng trống dưới tiêu đề */
+  color: var(--accent);        /* Màu xanh đen */
+  position: relative;          /* Làm điểm tựa để vẽ thanh gạch chân bên dưới */
+  padding-bottom: 10px;        /* Khoảng cách từ chữ đến thanh gạch chân */
+}
+
+.main-content h2::after {
+  content: '';                 /* Tạo một 'vật thể' ảo */
+  position: absolute;          /* Đặt vật thể này ở vị trí chính xác ta muốn */
+  bottom: 0;                   /* Nằm ở dưới cùng của thẻ h2 */
+  left: 0;                     /* Sát mép trái */
+  width: 60px;                 /* Độ dài của thanh gạch chân là 60px */
+  height: 4px;                 /* Độ dày của thanh gạch chân là 4px */
+  background: var(--accent-light); /* Màu của thanh gạch chân là màu be đồng */
+}
+
+.about, .objective {
+  margin-bottom: 3.5rem;
+}
+
+/* ================== GIỚI THIỆU (HIGHLIGHT LIST) ================== */
+.highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;                  /* Tăng khoảng cách giữa các khối thẻ */
+}
+
+.highlight-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;                    /* Tăng khoảng cách giữa icon tích và chữ */
+  background: white;
+  padding: 1.3rem 1.6rem;       /* Tăng độ thoáng đệm bên trong */
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.75;            /* Tăng khoảng cách giữa các dòng chữ cho thoáng mắt */
+  transition: var(--transition);
+}
+
+.highlight-list li:hover {
+  border-color: var(--accent-light);
+  transform: translateX(4px);
+}
+
+.highlight-list li i {
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.highlight-list li strong {
+  color: var(--accent);
+}
+
+/* ================== THẺ MỤC TIÊU NGHỀ NGHIỆP ================== */
+.objective-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+
+.objective-card {
+  background: white;
+  padding: 2rem;                /* Tăng đệm trong thẻ mục tiêu */
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+  position: relative;
+  transition: var(--transition);
+}
+
+.objective-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.objective-card .card-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-light);
+  background: rgba(156, 124, 94, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  margin-bottom: 0.9rem;
+}
+
+.objective-card.highlight .card-tag {
+  color: var(--accent);
+  background: rgba(44, 62, 80, 0.1);
+}
+
+.objective-card h4 {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.objective-card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.objective-card ul li {
+  font-size: 0.96rem;
+  color: var(--text-light);
+  line-height: 1.75;            /* Tăng độ giãn dòng chữ */
+  margin-bottom: 0.9rem;        /* Tăng khoảng cách giữa các gạch đầu dòng */
+}
+
+/* ================== LƯỚI KỸ NĂNG (SKILLS GRID) ================== */
+.skills {
+  margin-bottom: 3.5rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-item {
+  background: white;
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+  transition: var(--transition);
+}
+
+.skill-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-light);
+}
+
+.skill-item i {
+  font-size: 2.2rem;
+  color: var(--accent-light);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.skill-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+}
+
+.skill-item p {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.65;
+}
+
+/* ================== CÔNG CỤ VÀ NỀN TẢNG (TOOLS SECTION) ================== */
+.tools-section {
+  margin-bottom: 3.5rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.tool-card {
+  background: white;
+  padding: 1.4rem 1.6rem;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  transition: var(--transition);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-light);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.tool-card i {
+  font-size: 1.8rem;
+  color: var(--accent-light);
+  margin-top: 2px;
+  min-width: 30px;
+}
+
+.tool-card strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.tool-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ================== PHẦN HÀNH TRÌNH (EXPERIENCE) ================== */
+.experience {
+  margin-bottom: 4rem;         /* Khoảng cách sau khi kết thúc phần hành trình */
+}
+
+.item {
+  background: white;           /* Nền trắng cho mốc hành trình */
+  padding: 2rem;               /* Đệm bên trong */
+  border-radius: var(--radius); /* Bo góc */
+  margin-bottom: 1.5rem;       /* Khoảng cách giữa các mốc (ví dụ giữa học vấn và quân đội) */
+  border-left: 5px solid var(--accent); /* Vẽ một thanh màu xanh đen đậm bên trái thẻ để làm điểm nhấn */
+  transition: var(--transition); /* Hiệu ứng mượt */
+}
+
+.item:hover {
+  transform: translateX(10px); /* Dịch nhẹ thẻ sang phải khi di chuột vào */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Làm bóng đổ rõ hơn khi hover */
+}
+
+.item h3 {
+  font-size: 1.2rem;           /* Tên nơi công tác/học tập */
+  margin-bottom: 0.5rem;       /* Khoảng cách dưới h3 */
+  color: var(--accent);        /* Màu xanh đen */
+}
+
+.item span {
+  display: block;              /* Để thời gian nằm trên một dòng riêng */
+  color: var(--accent-light);   /* Màu be đồng cho thời gian */
+  font-weight: 600;            /* In đậm thời gian */
+  margin-bottom: 1rem;         /* Khoảng cách dưới mốc thời gian */
+  font-size: 0.9rem;           /* Chữ thời gian hơi nhỏ */
+}
+
+.item p {
+  color: var(--text-light);    /* Giải thích chi tiết quá trình */
+}
+
+/* ================== PHẦN TRÍCH DẪN (QUOTE) ================== */
+.quote-section {
+  margin: 4rem 0;              /* Khoảng trống trên và dưới khối trích dẫn */
+  padding: 4rem 3rem;          /* Đệm bên trong khối trích dẫn */
+  background: var(--accent);   /* Nền xanh đen đậm toàn bộ khối */
+  color: white;                /* Chữ màu trắng nổi bật */
+  border-radius: var(--radius); /* Bo góc lớn cho khối */
+  text-align: center;          /* Căn chữ vào chính giữa khối */
+  position: relative;          /* Điểm tựa cho dấu nháy kép trang trí */
+  overflow: hidden;            /* Cắt bỏ phần dư thừa của dấu nháy khổng lồ lòi ra ngoài */
+}
+
+.quote-section::before {
+  content: '"';                /* Tạo dấu nháy kép trang trí */
+  position: absolute;          /* Đặt nó ở vị trí tự do */
+  top: -20px;                  /* Cho nó hơi nhô lên phía trên một chút */
+  left: 30px;                  /* Nằm bên trái */
+  font-size: 12rem;            /* Kích thước dấu nháy cực kỳ khổng lồ */
+  font-family: 'Playfair Display', serif; /* Font chữ tiêu đề */
+  opacity: 0.1;                /* Làm mờ 90% để dấu nháy chìm xuống làm nền */
+  color: white;                /* Màu trắng mờ */
+}
+
+.quote {
+  font-family: 'Playfair Display', serif; /* Font chữ trích dẫn sang trọng */
+  font-size: 1.8rem;           /* Chữ trích dẫn khá lớn */
+  font-style: italic;          /* In nghiêng trích dẫn */
+  position: relative;          /* Đảm bảo chữ nằm trên dấu nháy trang trí */
+  z-index: 1;                  /* Thứ tự hiển thị trên cùng */
+  line-height: 1.5;            /* Khoảng cách dòng */
+}
+
+/* ================== RESPONSIVE (CHO ĐIỆN THOẠI) ================== */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr; /* Trên màn hình nhỏ, thay vì 2 cột thì ta dồn tất cả thành 1 cột */
+  }
+  .sidebar {
+    height: auto;              /* Sidebar không còn cố định cao bằng màn hình nữa */
+    position: relative;        /* Bỏ tính chất dính (sticky) */
+    border-right: none;        /* Bỏ đường kẻ bên phải */
+    border-bottom: 1px solid #eee; /* Thay bằng đường kẻ bên dưới để ngăn cách các phần */
+  }
+}

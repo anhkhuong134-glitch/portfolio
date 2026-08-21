@@ -1,0 +1,297 @@
+<!-- 
+  FILE: project-detail.html
+  ĐÂY LÀ GÌ? : Trang chi tiết dự án — hiển thị tổng quan, kết quả nghiên cứu, kỹ năng thành thạo và liên kết đến báo cáo Google Docs đầy đủ.
+-->
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Dự Án | KHƯƠNG TUẤN ANH</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="project-detail.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== FINDINGS SECTION STYLING ========== */
+    .findings-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .finding-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      background: #faf8f5;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .finding-card:hover {
+      transform: translateX(6px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .finding-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: white;
+      background: var(--accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .finding-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ========== SKILLS SECTION STYLING ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.4rem;
+      background: #ffffff;
+      border: 1px solid #eee8df;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border-color: var(--accent-light);
+    }
+
+    .skill-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      background: #faf6f0;
+      padding: 10px;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .skill-info h4 {
+      margin: 0 0 0.4rem 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .skill-info p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    /* ========== GOOGLE DOCS BUTTON ========== */
+    .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 2rem;
+      background: linear-gradient(135deg, #2c3e50 0%, #3d5166 100%);
+      color: #ffffff;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 6px 20px rgba(44, 62, 80, 0.25);
+    }
+
+    .doc-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(44, 62, 80, 0.35);
+      background: linear-gradient(135deg, #3d5166 0%, #2c3e50 100%);
+    }
+
+    .doc-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .detail-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 2px solid #f0e9df;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="logo">KHƯƠNG TUẤN ANH</a>
+    <a href="projects.html" class="back-btn">Quay Lại</a>
+  </nav>
+
+  <div class="detail-container">
+    <div class="detail-content">
+
+      <!-- PHẦN ĐẦU TRANG CHI TIẾT -->
+      <div class="detail-header">
+        <span class="detail-type" id="projectType">Loại dự án</span>
+        <h1 id="projectTitle">Tên Dự Án</h1>
+        <p id="projectDescription">Mô tả dự án</p>
+      </div>
+
+
+
+      <!-- 1. MỤC TIÊU DỰ ÁN -->
+      <section class="detail-section">
+        <h2>Mục Tiêu Dự Án</h2>
+        <ul class="objectives-list" id="objectivesList"></ul>
+      </section>
+
+      <!-- 2. QUY TRÌNH THỰC HIỆN -->
+      <section class="detail-section">
+        <h2>Quy Trình Thực Hiện</h2>
+        <div class="process-timeline" id="processList"></div>
+      </section>
+
+      <!-- 3. KẾT QUẢ NGHIÊN CỨU THỰC TẾ / ĐIỂM NỔI BẬT -->
+      <section class="detail-section" id="findingsSection" style="display:none;">
+        <h2 id="findingsTitle">Kết Quả Nghiên Cứu Nổi Bật</h2>
+        <div class="findings-list" id="findingsList"></div>
+      </section>
+
+      <!-- 4. KỸ NĂNG & NĂNG LỰC THÀNH THẠO -->
+      <section class="detail-section" id="skillsSection" style="display:none;">
+        <h2>Kỹ Năng Thành Thạo Từ Dự Án</h2>
+        <div class="skills-grid" id="skillsList"></div>
+      </section>
+
+      <!-- 5. CÔNG CỤ & CÔNG NGHỆ -->
+      <section class="detail-section">
+        <h2>Công Cụ & Công Nghệ</h2>
+        <div class="tools-list" id="toolsList"></div>
+      </section>
+
+
+
+      <!-- 6. NÚT ĐIỀU HƯỚNG VÀ XEM BÁO CÁO FULL -->
+      <div class="detail-cta">
+        <a href="projects.html" class="btn-secondary">← Quay Lại Danh Sách</a>
+        <a id="docLink" href="#" target="_blank" rel="noopener noreferrer" class="doc-btn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+          </svg>
+          Xem Chi Tiết Báo Cáo (Google Docs)
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const projectId = getProjectFromURL();
+      const project = projectsData[projectId];
+
+      if (project) {
+        // Điền thông tin cơ bản
+        document.getElementById('projectType').textContent = project.type;
+        document.getElementById('projectTitle').textContent = project.title;
+        document.getElementById('projectDescription').textContent = project.description;
+        document.title = `${project.title} - KHƯƠNG TUẤN ANH`;
+
+        // 1. Render Kết Quả Nghiên Cứu / Điểm Nổi Bật
+        if (project.findings && project.findings.length > 0) {
+          const findingsSection = document.getElementById('findingsSection');
+          const findingsTitle = document.getElementById('findingsTitle');
+          const findingsList = document.getElementById('findingsList');
+          findingsSection.style.display = 'block';
+          if (project.findingsTitle) {
+            findingsTitle.textContent = project.findingsTitle;
+          }
+          findingsList.innerHTML = project.findings.map((finding, index) => `
+            <div class="finding-card">
+              <span class="finding-badge">Key ${index + 1}</span>
+              <p class="finding-text">${finding}</p>
+            </div>
+          `).join('');
+        }
+
+        // 2. Render Kỹ Năng Thành Thạo
+        if (project.skills && project.skills.length > 0) {
+          const skillsSection = document.getElementById('skillsSection');
+          const skillsList = document.getElementById('skillsList');
+          skillsSection.style.display = 'block';
+          skillsList.innerHTML = project.skills.map(skill => `
+            <div class="skill-card">
+              <div class="skill-icon">${skill.icon}</div>
+              <div class="skill-info">
+                <h4>${skill.name}</h4>
+                <p>${skill.desc}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 3. Render Mục Tiêu
+        const objectivesList = document.getElementById('objectivesList');
+        objectivesList.innerHTML = project.objectives.map(obj => `<li>${obj}</li>`).join('');
+
+        // 4. Render Quy Trình
+        const processList = document.getElementById('processList');
+        processList.innerHTML = project.process.map((step, index) => `
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4>Bước ${index + 1}</h4>
+              <p>${step}</p>
+            </div>
+          </div>
+        `).join('');
+
+        // 5. Render Công Cụ
+        const toolsList = document.getElementById('toolsList');
+        toolsList.innerHTML = project.tools.map(tool => `<span class="tool-tag">${tool}</span>`).join('');
+
+        // 6. Gán link tài liệu / ấn phẩm vào nút ở cuối trang
+        const docLink = document.getElementById('docLink');
+        if (project.googleDocUrl) {
+          docLink.href = project.googleDocUrl.startsWith('http') ? project.googleDocUrl : encodeURI(project.googleDocUrl);
+          if (project.buttonText) {
+            docLink.innerHTML = `
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:currentColor;margin-right:8px;">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+              ${project.buttonText}
+            `;
+          }
+        }
+      } else {
+        document.body.innerHTML = '<h1 style="text-align:center; padding: 10rem; color: #2c3e50;">Dự án không tồn tại hoặc đã bị gỡ bỏ.</h1>';
+      }
+    });
+  </script>
+</body>
+</html>
